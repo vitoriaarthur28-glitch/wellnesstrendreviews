@@ -1,0 +1,80 @@
+<!-- CHAT COM ESPECIALISTA — HTML EM ALEMÃO (só produtos com "lang": "de"; CLAUDE.md seção 14). Tradução de ../chat.html: mudou o inglês de lá, traduza aqui também. Colar antes do </body>, seguido do chat.js dentro de <script>...</script>.
+     Os marcadores entre chaves duplas são trocados pelos textos de cada produto (ver CAMPOS.md e montar_chat.py).
+     Os comentários OPCIONAL:PRECOS / SE_NAO:PRECOS / OPCIONAL:DEPOIMENTOS marcam partes que saem quando o produto não tem
+     preços ou depoimentos: com preços, fica o 1º bloco #chat-oferta e apaga-se o do SE_NAO; sem preços, o contrário. -->
+<!-- 16b. CHAT DE DÚVIDAS (REGRA FIXA v34; estrutura fixa da 2ª conversa gravada: referencia/chat/roteiro_chat.md; especialista do nicho: referencia/chat/especialistas.md; textos por nicho: referencia/chat/copy_chat_por_nicho.md).
+     Personagem fictícia do nicho, com "Dr." antes do nome (REGRA FIXA v60). Conversa guiada no ritmo da conversa gravada,
+     só com fatos do site oficial e do próprio review. Sem IA, sem fila falsa, sem contador falso. -->
+<button type="button" class="chat-lancador aguardando" id="chat-lancador" aria-haspopup="dialog" aria-controls="chat-janela">
+  <span class="chat-avatar" aria-hidden="true"><img src="{{CHAT_FOTO}}" alt="{{CHAT_NOME}}" width="46" height="46" loading="lazy" decoding="async"><span class="ponto"></span></span>
+  <span class="txt">
+    <span class="nome">{{CHAT_NOME}}</span>
+    <span class="esp">{{CHAT_ESPECIALIDADE}}</span>
+    <span class="status"><span class="ponto-online"></span>Jetzt online</span>
+    <span class="chamada">Hallo! 👋 Fragen zu {{PRODUTO}}? Ich helfe Ihnen gerne.</span>
+  </span>
+  <span class="rotulo-cel">{{CHAT_ESPECIALIDADE}}<span class="ponto-online"></span></span>
+  <span class="chat-balao" id="chat-balao" aria-hidden="true"></span>
+  <span class="chat-selo" id="chat-selo" aria-label="1 neue Nachricht">1</span>
+</button>
+<div class="chat-janela" id="chat-janela" role="dialog" aria-label="{{CHAT_NOME}}, {{CHAT_ESPECIALIDADE}}" hidden>
+  <div class="chat-topo">
+    <span class="chat-avatar" aria-hidden="true"><img src="{{CHAT_FOTO}}" alt="{{CHAT_NOME}}" width="46" height="46" loading="lazy" decoding="async"><span class="ponto"></span></span>
+    <span class="txt"><span class="nome" id="chat-nome-pessoa">{{CHAT_NOME}}</span><span class="status"><span class="ponto-online"></span><span id="chat-nome-produto" data-produto="{{PRODUTO}}">{{CHAT_ESPECIALIDADE}}</span></span></span>
+    <span class="pilula">Online</span>
+    <button type="button" class="chat-fechar" id="chat-fechar" aria-label="Chat schließen">×</button>
+  </div>
+  <div class="chat-msgs" id="chat-msgs" aria-live="polite">
+  </div>
+  <form class="chat-form" id="chat-form" autocomplete="off">
+    <input id="chat-campo" type="text" maxlength="200" placeholder="Ihr Vorname..." aria-label="Nachricht">
+    <button type="submit" aria-label="Senden"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20.5 21 12 3 3.5l2.6 7.2L15 12l-9.4 1.3z" fill="currentColor"/></svg></button>
+  </form>
+  <!-- Cartões de oferta: ficam no DOM desde o início (o repasse do gclid pega os links); o chat mostra uma cópia -->
+  <div hidden>
+    <!-- OPCIONAL:PRECOS -->
+    <div class="chat-cartoes" id="chat-oferta" data-subid-chat="{{PARAMETRO_SUBID_CHAT}}">
+      <div class="chat-cartao melhor" data-pacote="3"><div class="faixa-c">{{PACOTE_3_ROTULO}}</div><div class="corpo-c"><div class="esq"><span class="qtd">{{PACOTE_3_NOME}}</span><span class="dura">{{PACOTE_3_DURACAO}}</span><img style="--desloc: {{PACOTE_3_IMG_DESLOC}}" src="{{PACOTE_3_IMG}}" alt="{{PACOTE_3_IMG_ALT}}" width="500" height="427" loading="lazy" decoding="async"></div><div class="dir"><span class="preco-c">{{PACOTE_3_PRECO_UN}} {{MOEDA}}<small> {{TXT_POR_FRASCO}}</small></span><span class="info">{{TXT_GARANTIA_PACOTE}}</span><span class="info">{{PACOTE_3_FRETE}}</span><a class="cta" data-link-pacote="3" href="{{LINK_PACOTE_3}}" rel="sponsored nofollow">{{PACOTE_CTA}}</a><span class="total-c"><s>{{PACOTE_3_DE}}</s>{{TXT_TOTAL}} <b>{{PACOTE_3_TOTAL}}</b></span></div></div></div>
+      <div class="chat-cartao popular" data-pacote="2"><div class="faixa-c">{{PACOTE_2_ROTULO}}</div><div class="corpo-c"><div class="esq"><span class="qtd">{{PACOTE_2_NOME}}</span><span class="dura">{{PACOTE_2_DURACAO}}</span><img style="--desloc: {{PACOTE_2_IMG_DESLOC}}" src="{{PACOTE_2_IMG}}" alt="{{PACOTE_2_IMG_ALT}}" width="500" height="427" loading="lazy" decoding="async"></div><div class="dir"><span class="preco-c">{{PACOTE_2_PRECO_UN}} {{MOEDA}}<small> {{TXT_POR_FRASCO}}</small></span><span class="info">{{TXT_GARANTIA_PACOTE}}</span><span class="info">{{PACOTE_2_FRETE}}</span><a class="cta" data-link-pacote="2" href="{{LINK_PACOTE_2}}" rel="sponsored nofollow">{{PACOTE_CTA}}</a><span class="total-c"><s>{{PACOTE_2_DE}}</s>{{TXT_TOTAL}} <b>{{PACOTE_2_TOTAL}}</b></span></div></div></div>
+      <div class="chat-cartao" data-pacote="1"><div class="faixa-c">{{PACOTE_1_ROTULO}}</div><div class="corpo-c"><div class="esq"><span class="qtd">{{PACOTE_1_NOME}}</span><span class="dura">{{PACOTE_1_DURACAO}}</span><img style="--desloc: {{PACOTE_1_IMG_DESLOC}}" src="{{PACOTE_1_IMG}}" alt="{{PACOTE_1_IMG_ALT}}" width="500" height="427" loading="lazy" decoding="async"></div><div class="dir"><span class="preco-c">{{PACOTE_1_PRECO_UN}} {{MOEDA}}<small> {{TXT_POR_FRASCO}}</small></span><span class="info">{{TXT_GARANTIA_PACOTE}}</span><span class="info">{{PACOTE_1_FRETE}}</span><a class="cta" data-link-pacote="1" href="{{LINK_PACOTE_1}}" rel="sponsored nofollow">{{PACOTE_CTA}}</a><span class="total-c"><s>{{PACOTE_1_DE}}</s>{{TXT_TOTAL}} <b>{{PACOTE_1_TOTAL}}</b></span></div></div></div>
+    </div>
+    <!-- /OPCIONAL:PRECOS -->
+    <!-- SE_NAO:PRECOS -->
+    <div class="chat-cartoes" id="chat-oferta" data-subid-chat="{{PARAMETRO_SUBID_CHAT}}"><a class="cta" href="{{LINK_AFILIADO}}" rel="sponsored nofollow">{{CTA_GOLPE}}</a></div>
+    <!-- /SE_NAO:PRECOS -->
+  </div>
+  <!-- Textos do chat: só o que a página já publicou (FAQ, "O que é", intro, "Como usar", pacotes) -->
+  <template id="chat-respostas">
+    <div data-r="pergunta-tempo">{{CHAT_PERGUNTA_TEMPO}}</div>
+    <div data-r="pergunta-dor">{{CHAT_PERGUNTA_DOR_CORPO}}</div>
+    <div data-r="empatia">{{CHAT_EMPATIA_CORPO}}</div>
+    <div data-r="pergunta-tentou">{{CHAT_TENTOU_PERGUNTA}}</div>
+    <div data-r="tentou-sim">{{CHAT_TENTOU_SIM_CORPO}}</div>
+    <div data-r="tentou-nao">{{CHAT_TENTOU_NAO_CORPO}}</div>
+    <div data-r="gancho">{{CHAT_GANCHO}}</div>
+    <div data-r="sem-blend">{{CHAT_SEM_BLEND_CORPO}}</div>
+    <div data-r="como">{{CHAT_COMO_CORPO}}</div>
+    <div data-r="ingredientes-guia">{{CHAT_INGREDIENTES_CORPO}}</div>
+    <div data-r="resultados">{{CHAT_RESULTADOS_CORPO}}</div>
+    <div data-r="uso-guia">{{CHAT_USO_CORPO}}</div>
+    <!-- OPCIONAL:PRECOS -->
+    <div data-r="recomenda-3">{{CHAT_RECOMENDA_3_CORPO}}</div>
+    <div data-r="recomenda-2">{{CHAT_RECOMENDA_2_CORPO}}</div>
+    <div data-r="preco-dia">{{CHAT_PRECO_DIA_CORPO}}</div>
+    <!-- /OPCIONAL:PRECOS -->
+    <div data-r="garantia-curta">{{CHAT_GARANTIA_CURTA_CORPO}}</div>
+    <div data-r="promo">{{CHAT_PROMO_CORPO}}</div>
+    <!-- OPCIONAL:DEPOIMENTOS -->
+    <div data-r="depoimento">{{CHAT_DEPOIMENTO_CORPO}}</div>
+    <div data-r="depoimento-uso">{{CHAT_DEPOIMENTO_USO_CORPO}}</div>
+    <!-- /OPCIONAL:DEPOIMENTOS -->
+    <div data-r="dores-chaves">{{CHAT_DORES_CHAVES}}</div>
+    <div data-r="ingredientes"><p>{{FAQ_3_R}}</p></div>
+    <div data-r="uso"><p>{{FAQ_2_R}}</p></div>
+    <div data-r="seguranca"><p>{{FAQ_1_R}}</p></div>
+    <div data-r="preco"><p>{{FAQ_5_R}}</p></div>
+    <div data-r="garantia"><p>{{FAQ_4_R}}</p></div>
+    <div data-r="onde">{{ALERTA_TEXTO}}</div>
+    <div data-r="nao-sei"><p>Ich kann nur mit dem antworten, was auf der offiziellen {{PRODUTO}}-Website veröffentlicht ist, und ich gebe keine medizinische Beratung. Bei Fragen zu Ihrer Gesundheit oder zu Medikamenten wenden Sie sich bitte an Ihren Arzt.</p></div>
+  </template>
+</div>

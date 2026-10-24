@@ -1,0 +1,159 @@
+/* CHAT COM ESPECIALISTA — CSS (versão para as páginas da redithub.blog)
+   As fontes Poppins e Montserrat vêm da própria página (assets/review.css): nada de fonte embutida aqui.
+   Tudo fica preso ao chat (.chat-lancador e .chat-janela): o chat não muda .cta, box-sizing nem :root da página. */
+
+/* ---------- (2) Variáveis do chat (cores do produto e letras) ---------- */
+.chat-lancador, .chat-janela{
+  --forte: {{COR_PRODUTO}};
+  --clara: {{COR_PRODUTO_CLARA}};
+  --texto-faixa: {{COR_TEXTO_FAIXA}};
+  --gradiente: linear-gradient(180deg, var(--clara) 10%, var(--forte) 100%);
+  --gradiente-topo: linear-gradient(180deg, var(--clara) 5%, var(--forte) 100%);
+  --tinta: color-mix(in srgb, var(--forte) 8%, #ffffff);
+  --tinta-forte: color-mix(in srgb, var(--forte) 16%, #ffffff);
+  --texto: #000000;
+  --texto-suave: #444444;
+  --linha: #e4e4e4;
+  --ok: #1f7a3a;
+  --alerta: #c0261b;
+  --alerta-fundo: #fff3f1;
+  --botao: linear-gradient(180deg, #fffa14 48%, #daad00 100%);
+  --botao-texto: #000000;
+  --fonte: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --fonte-marca: "Montserrat", "Poppins", Arial, sans-serif;
+  --fs-base: 19px;
+  --fs-pequena: 16px;
+  --lh: 1.6;
+}
+.chat-lancador *, .chat-janela *, .chat-lancador *::before, .chat-janela *::before, .chat-lancador *::after, .chat-janela *::after{ box-sizing: border-box; }
+/* Botão "Buy Now" dos cartões. A página tem .cta{text-align:center;margin:20px 0}: aqui tudo é redefinido dentro do chat */
+.chat-janela .cta{
+  display: block; width: 100%; max-width: 520px; margin: 0 auto; padding: 15px 24px;
+  background: var(--botao); color: var(--botao-texto); text-decoration: none; text-align: center;
+  font-family: var(--fonte); font-size: 22px; line-height: 1.2; font-weight: 700;
+  border-radius: 10px; box-shadow: 0 0 16px -2px rgba(0,0,0,.5);
+  animation: chat-pulsar 2.4s ease-in-out infinite; transition: filter .15s ease;
+}
+@keyframes chat-pulsar{ 0%,100%{ transform: scale(1); } 50%{ transform: scale(1.03); } }
+.chat-janela .cta:hover{ filter: brightness(1.04); }
+@media (prefers-reduced-motion: reduce){ .chat-janela .cta{ animation: none; } }
+
+/* ---------- (3) CSS do chat ---------- */
+/* ===== v34 (REGRA FIXA): chat com especialista do nicho (bloco 16b). Roteiro fixo, só com fatos do site oficial e do review; sem IA, sem fila falsa; especialista com "Dr." antes do nome (REGRA FIXA v60). ===== */
+.chat-lancador{ position: fixed; right: 20px; bottom: 20px; z-index: 45; display: flex; align-items: center; gap: 12px; width: auto; min-width: 310px; max-width: calc(100vw - 40px); padding: 12px 14px; border: 0; border-radius: 16px; background: #009677; color: #fff; font: inherit; text-align: left; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,.25); transition: transform .2s ease, opacity .2s ease; }
+.chat-lancador:hover{ transform: translateY(-2px); }
+.chat-lancador .chat-avatar{ width: 46px; height: 46px; }
+.chat-lancador .txt{ display: block; min-width: 0; }
+.chat-lancador .nome{ display: block; font-weight: 700; font-size: 16px; line-height: 1.25; }
+.chat-lancador .esp{ display: block; font-weight: 600; font-size: 14px; line-height: 1.3; white-space: nowrap; } /* REGRA FIXA v42: "Specialist in [nicho]" sempre numa linha só */
+.chat-lancador .status{ display: block; font-size: 13px; line-height: 1.3; opacity: .95; }
+.chat-lancador .chamada{ display: block; width: 0; min-width: 100%; font-size: 14px; line-height: 1.35; margin-top: 3px; } /* v42: a chamada não alarga o cartão; quem define a largura é o nome do nicho */
+.chat-lancador.escondido, .chat-lancador.aberto{ opacity: 0; pointer-events: none; transform: translateY(12px); }
+/* v39 (REGRA FIXA): o botão do chat só aparece 3 s depois que a página fica livre, subindo de baixo para cima */
+.chat-lancador.aguardando{ visibility: hidden; opacity: 0; pointer-events: none; }
+.chat-lancador.surgiu{ animation: chat-surgir .7s cubic-bezier(.2,.85,.3,1.15) backwards; }
+@keyframes chat-surgir{ from{ opacity: 0; transform: translateY(140px); } to{ opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce){ .chat-lancador.surgiu{ animation: none; } }
+.chat-avatar{ position: relative; flex: none; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #00785F; }
+.chat-avatar img{ display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+.chat-avatar .ponto{ position: absolute; right: -1px; bottom: -1px; width: 12px; height: 12px; border-radius: 50%; background: #22BE8E; border: 2px solid #fff; }
+.ponto-online{ display: inline-block; width: 8px; height: 8px; margin-right: 5px; border-radius: 50%; background: #22BE8E; vertical-align: 1px; animation: chat-pulso 1.6s ease-in-out infinite; }
+@keyframes chat-pulso{ 0%, 100%{ box-shadow: 0 0 0 0 rgba(34,190,142,.7); } 50%{ box-shadow: 0 0 0 5px rgba(34,190,142,0); } }
+.chat-janela{ position: fixed; right: 20px; bottom: 20px; z-index: 55; display: flex; flex-direction: column; width: 400px; height: 620px; max-height: calc(100vh - 40px); border-radius: 16px; overflow: hidden; background: #ECE5DD; box-shadow: 0 18px 50px rgba(0,0,0,.30); font-size: 15px; line-height: 1.45; color: #1a1a1a; }
+.chat-janela[hidden]{ display: none; }
+.chat-topo{ display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: #00785F; color: #fff; }
+.chat-topo .chat-avatar{ width: 40px; height: 40px; }
+.chat-topo .txt{ flex: 1; min-width: 0; }
+.chat-topo .nome{ display: block; font-weight: 700; font-size: 16px; line-height: 1.25; }
+.chat-topo .status{ display: block; font-size: 13px; opacity: .9; white-space: nowrap; } /* REGRA FIXA v42: nicho numa linha só; se não couber, o script reduz a letra */
+.chat-fechar{ flex: none; width: 36px; height: 36px; border: 0; border-radius: 50%; background: rgba(255,255,255,.12); color: #fff; font-size: 22px; line-height: 1; cursor: pointer; }
+.chat-msgs{ flex: 1; overflow-y: auto; padding: 12px 12px 6px; overscroll-behavior: contain; }
+.chat-msg{ display: flex; margin: 0 0 8px; }
+.chat-msg.eu{ justify-content: flex-end; }
+.chat-msg .bolha{ position: relative; max-width: 85%; padding: 8px 10px 18px; border-radius: 10px; background: #fff; box-shadow: 0 1px 1px rgba(0,0,0,.12); overflow-wrap: anywhere; }
+.chat-msg.eu .bolha{ background: #DCF8C6; }
+.chat-msg .bolha p{ margin: 0 0 6px; font-size: 15px; line-height: 1.45; }
+.chat-msg .bolha p:last-of-type{ margin-bottom: 0; }
+.chat-msg .hora{ position: absolute; right: 8px; bottom: 3px; font-size: 11px; color: #667781; }
+.chat-msg.digitando .bolha{ padding: 12px 14px; }
+.chat-msg.digitando .bolha span{ display: inline-block; width: 7px; height: 7px; margin: 0 2px; border-radius: 50%; background: #9aa5ab; animation: chat-pontos 1.2s infinite ease-in-out; }
+.chat-msg.digitando .bolha span:nth-child(2){ animation-delay: .15s; }
+.chat-msg.digitando .bolha span:nth-child(3){ animation-delay: .3s; }
+@keyframes chat-pontos{ 0%, 60%, 100%{ transform: translateY(0); opacity: .5; } 30%{ transform: translateY(-4px); opacity: 1; } }
+.chat-opcoes{ display: flex; flex-wrap: wrap; gap: 6px; margin: 2px 0 10px; }
+.chat-opcoes button{ border: 1px solid #009677; border-radius: 999px; background: #fff; color: #00785F; font: inherit; font-size: 14px; font-weight: 600; padding: 6px 12px; cursor: pointer; }
+.chat-opcoes button:hover{ background: #e7f6f3; }
+.chat-form{ display: flex; gap: 8px; align-items: center; padding: 8px 10px; background: #f0f2f5; }
+.chat-form input{ flex: 1; min-width: 0; height: 42px; padding: 0 14px; border: 0; border-radius: 999px; background: #fff; font: inherit; font-size: 16px; color: #1a1a1a; }
+.chat-form input:focus{ outline: 2px solid #009677; outline-offset: 0; }
+.chat-form button{ flex: none; width: 42px; height: 42px; border: 0; border-radius: 50%; background: #009677; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.chat-form button svg{ width: 20px; height: 20px; }
+@media (max-width: 899px){
+  /* v54 (REGRA FIXA): tablet = o mesmo cartão do computador, a 20px do fundo (não existe mais barra fixa embaixo) */
+  .chat-lancador{ right: 14px; bottom: 20px; }
+  /* v37 (REGRA FIXA): no celular e no tablet o chat é uma janela flutuante, como no computador (nunca a tela toda):
+     10px das bordas, até 400px de largura e até 620px / 78% da altura visível (tamanho B, escolhido pelo usuário); sobe junto com o teclado (--teclado, --altura-visivel) */
+  .chat-janela{ right: 10px; left: auto; top: auto; bottom: calc(10px + var(--teclado, 0px)); width: min(400px, calc(100vw - 20px)); height: min(620px, calc(var(--altura-visivel, 100vh) * .78)); max-height: calc(var(--altura-visivel, 100vh) - 20px); border-radius: 16px; }
+  .chat-janela .chat-topo .pilula{ display: none; } /* o ponto verde já mostra "online"; libera espaço para o nome e a especialidade */
+}
+/* v38 (REGRA FIXA): paleta do chat = a do widget do template base (verde #009677, cabeçalho #00785F, ponto online #22BE8E).
+   Chat fechado com balão de mensagem em cima do botão, em todo aparelho (base: widget do template inicial).
+   Celular: botão em pílula (foto + "Specialist in [nicho]" + ponto verde). Computador e tablet: o cartão de sempre. */
+.chat-lancador .rotulo-cel{ display: none; }
+.chat-balao{ display: block; position: absolute; right: 6px; bottom: calc(100% + 14px); width: max-content; max-width: min(280px, calc(100vw - 36px)); padding: 10px 14px; border-radius: 16px; background: #fff; color: #1a1a1a; font-size: 15px; font-weight: 400; line-height: 1.35; text-align: left; white-space: normal; text-shadow: none; box-shadow: 0 6px 18px rgba(0,0,0,.20); opacity: 0; transform: translateY(8px) scale(.96); transform-origin: 85% 100%; transition: opacity .25s ease, transform .25s ease; pointer-events: none; }
+.chat-balao::after{ content: ""; position: absolute; right: 26px; bottom: -7px; width: 14px; height: 14px; background: #fff; transform: rotate(45deg); box-shadow: 4px 4px 6px rgba(0,0,0,.06); }
+.chat-balao.visivel{ opacity: 1; transform: none; pointer-events: auto; }
+@media (max-width: 767px){
+  .chat-lancador{ right: 12px; bottom: 16px; width: auto; min-width: 0; max-width: calc(100vw - 24px); gap: 12px; padding: 8px 18px 8px 8px; border-radius: 999px; overflow: visible;
+    border: 1px solid rgba(255,255,255,.28); box-shadow: 0 0 22px rgba(0,150,119,.40), 0 6px 16px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.18); }
+  .chat-lancador:hover{ transform: none; }
+  .chat-lancador .txt{ display: none; }
+  .chat-lancador .chat-avatar{ width: 42px; height: 42px; } /* v39: foto na proporção do template base (~70% da altura da pílula) */
+  .chat-lancador .rotulo-cel{ display: flex; align-items: center; gap: 10px; min-width: 0; font-family: var(--fonte); font-size: 13px; font-weight: 700; letter-spacing: .005em; line-height: 1.2; white-space: nowrap; }
+  .chat-lancador .rotulo-cel .ponto-online{ flex: none; width: 10px; height: 10px; margin: 0; vertical-align: 0; outline: 3px solid rgba(34,190,142,.30); }
+  .chat-lancador .chat-avatar img{ border: 2px solid #fff; box-sizing: border-box; } /* foto com borda branca (como no template base) */
+  .chat-lancador .chat-avatar{ box-shadow: 0 0 0 1px rgba(0,0,0,.10), 0 2px 6px rgba(0,0,0,.25); }
+  .chat-lancador .chat-avatar .ponto{ display: none; } /* sem a bolinha colada na foto: fica só a que pulsa ao lado do texto */
+}
+@media (prefers-reduced-motion: reduce){ .ponto-online, .chat-msg.digitando .bolha span{ animation: none; } .chat-lancador, .chat-balao{ transition: none; } }
+/* v34 (REGRA FIXA): conversa guiada (estrutura da 2ª conversa gravada) + cartões de oferta com foto dos potes */
+.chat-topo .pilula{ flex: none; padding: 3px 9px; border-radius: 999px; background: rgba(255,255,255,.18); font-size: 12px; font-weight: 700; }
+.chat-sessao{ margin: 4px auto 12px; width: max-content; max-width: 92%; padding: 5px 12px; border-radius: 8px; background: #d9fdd3; color: #54656f; font-size: 12.5px; text-align: center; }
+.chat-divisor{ margin: 6px 0 10px; text-align: center; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #54656f; }
+.chat-cartoes{ display: grid; gap: 10px; margin: 0 0 10px; width: 100%; }
+.chat-cartao{ border-radius: 10px; overflow: hidden; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.15); }
+.chat-cartao .faixa-c{ padding: 4px 8px; background: #c9cdd1; color: #222; text-align: center; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.chat-cartao.popular .faixa-c{ background: var(--forte); color: var(--texto-faixa); }
+/* Maior pacote: mesmas cores e mesmo gradiente de círculo do cartão de 6 potes do bloco de pacotes (tom claro só atrás dos frascos, cor forte atrás do texto) e a mesma aba branca com texto na cor forte */
+.chat-cartao.melhor{ background: radial-gradient(ellipse 30% 45% at 22% 78%, var(--clara) 0%, var(--forte) 100%); color: var(--texto-faixa); text-shadow: 0 1px 3px rgba(0,0,0,.28); }
+.chat-cartao.melhor .faixa-c{ background: #fff; color: var(--forte); text-shadow: none; }
+.chat-cartao.melhor .cta{ text-shadow: none; }
+.chat-cartao .corpo-c{ display: grid; grid-template-columns: 44% 56%; align-items: center; padding: 8px 10px 10px; }
+.chat-cartao .esq{ text-align: center; }
+.chat-cartao .qtd{ display: block; font-weight: 700; font-size: 15px; line-height: 1.2; }
+.chat-cartao .dura{ display: block; font-size: 11.5px; opacity: .8; }
+.chat-cartao .esq img{ display: block; width: 100%; max-width: 110px; height: auto; margin: 4px auto 0; transform: translateX(var(--desloc, 0%)); }
+.chat-cartao .dir{ text-align: center; }
+.chat-cartao .preco-c{ font-family: var(--fonte-marca); font-weight: 700; font-size: 30px; line-height: 1; }
+.chat-cartao .preco-c small{ font-family: var(--fonte); font-size: 12px; font-weight: 400; opacity: .85; }
+.chat-cartao .info{ display: block; font-size: 11.5px; opacity: .85; margin-top: 2px; }
+.chat-cartao .cta{ display: block; margin: 7px 0 5px; padding: 7px 8px; font-size: 14px; border-radius: 8px; }
+.chat-cartao .total-c{ font-size: 12px; }
+.chat-cartao .total-c s{ opacity: .7; margin-right: 4px; }
+/* v34: selo "1" no botão do chat (mensagem esperando) e pacote recomendado para a pessoa */
+.chat-selo{ position: absolute; top: -7px; right: -7px; min-width: 24px; height: 24px; padding: 0 6px; border-radius: 999px; background: #e41e26; color: #fff; font-size: 13px; font-weight: 700; line-height: 24px; text-align: center; box-shadow: 0 0 0 2px #fff; animation: chat-selo-pula 1.8s ease-in-out infinite; }
+.chat-selo[hidden]{ display: none; }
+@keyframes chat-selo-pula{ 0%, 70%, 100%{ transform: scale(1); } 80%{ transform: scale(1.18); } 90%{ transform: scale(.96); } }
+.chat-cartao.recomendado{ box-shadow: 0 0 0 3px var(--forte), 0 2px 8px rgba(0,0,0,.25); }
+.chat-cartao .tag-recomendado{ display: block; padding: 4px 8px; background: var(--forte); color: var(--texto-faixa); border-bottom: 1px solid rgba(255,255,255,.6); text-align: center; font-size: 11.5px; font-weight: 700; letter-spacing: .03em; text-shadow: none; }
+@media (prefers-reduced-motion: reduce){ .chat-selo{ animation: none; } }
+.chat-msg.destaque{ display: block; }
+.chat-destaque{ display: block; margin: 0 0 4px; }
+/* o cartão herda a mesma letra base da página (fora do chat ele está dentro do body; aqui a janela do chat usa 15px) */
+/* Cartão de depoimento copiado da seção #customer-reviews da página (fábrica de review): mesmo visual, em tamanho de chat */
+.chat-destaque .review-card{ display: block; list-style: none; margin: 0; border-radius: 12px; overflow: hidden; font-size: 15px; line-height: 1.45; }
+.chat-destaque .review-head{ padding: 12px; gap: 10px; }
+.chat-destaque .review-head img{ width: 48px; height: 48px; }
+.chat-destaque .review-text{ padding: 12px; }
+.chat-destaque-tag{ display: inline-block; margin: 0 0 6px 4px; padding: 3px 10px; border-radius: 999px; background: #fff; color: var(--forte); font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; box-shadow: 0 1px 1px rgba(0,0,0,.12); }
+.chat-destaque-legenda{ display: block; margin: 7px 4px 0; font-size: 12px; color: #54656f; text-align: center; }

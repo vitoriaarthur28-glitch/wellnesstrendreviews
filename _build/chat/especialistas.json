@@ -1,0 +1,82 @@
+{
+ "weight-loss": {
+  "nome": "Dr. Emily Parker",
+  "especialidade": "Specialist in Weight Loss",
+  "foto": "/especialistas/weight-loss.webp"
+ },
+ "blood-sugar": {
+  "nome": "Dr. Laura Bennett",
+  "especialidade": "Specialist in Blood Sugar",
+  "foto": "/especialistas/blood-sugar.webp"
+ },
+ "blood-pressure": {
+  "nome": "Dr. Michael Reed",
+  "especialidade": "Specialist in Blood Pressure",
+  "foto": "/especialistas/blood-pressure.webp"
+ },
+ "nerve-health": {
+  "nome": "Dr. Rachel Moore",
+  "especialidade": "Specialist in Nerve Health",
+  "foto": "/especialistas/nerve-health.webp"
+ },
+ "male-vitality-ed": {
+  "nome": "Dr. Daniel Brooks",
+  "especialidade": "Specialist in Men's Health",
+  "foto": "/especialistas/male-vitality-ed.webp"
+ },
+ "dental-oral-health": {
+  "nome": "Dr. Sarah Collins",
+  "especialidade": "Specialist in Oral Health",
+  "foto": "/especialistas/dental-oral-health.webp"
+ },
+ "joint-health": {
+  "nome": "Dr. Karen Hughes",
+  "especialidade": "Specialist in Joint Health",
+  "foto": "/especialistas/joint-health.webp"
+ },
+ "vision-eye-health": {
+  "nome": "Dr. Jennifer Walsh",
+  "especialidade": "Specialist in Eye Health",
+  "foto": "/especialistas/vision-eye-health.webp"
+ },
+ "memory-brain-health": {
+  "nome": "Dr. Thomas Hayes",
+  "especialidade": "Specialist in Memory & Brain Health",
+  "foto": "/especialistas/memory-brain-health.webp"
+ },
+ "respiratory-health": {
+  "nome": "Dr. Olivia Grant",
+  "especialidade": "Specialist in Respiratory Health",
+  "foto": "/especialistas/respiratory-health.webp"
+ },
+ "prostate-health": {
+  "nome": "Dr. Richard Coleman",
+  "especialidade": "Specialist in Prostate Health",
+  "foto": "/especialistas/prostate-health.webp"
+ },
+ "hearing-health": {
+  "nome": "Dr. Mark Ellison",
+  "especialidade": "Specialist in Hearing Health",
+  "foto": "/especialistas/hearing-health.webp"
+ },
+ "skin-health": {
+  "nome": "Dr. Claire Donovan",
+  "especialidade": "Specialist in Skin Health",
+  "foto": "/especialistas/skin-health.webp"
+ },
+ "nail-foot-health": {
+  "nome": "Dr. Andrew Mitchell",
+  "especialidade": "Specialist in Nail & Foot Health",
+  "foto": "/especialistas/nail-foot-health.webp"
+ },
+ "gut-health": {
+  "nome": "Dr. Megan Foster",
+  "especialidade": "Specialist in Gut Health",
+  "foto": "/especialistas/gut-health.webp"
+ },
+ "sleep-health": {
+  "nome": "Dr. Ryan Caldwell",
+  "especialidade": "Specialist in Sleep Health",
+  "foto": "/especialistas/sleep-health.webp"
+ }
+}
