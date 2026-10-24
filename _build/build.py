@@ -63,6 +63,32 @@ PAGES = {
         "popup_text": "Buying directly from the official source ensures you receive the authentic original product.",
         "cta_text": "Check Availability On Official Website",
     },
+    "olivaro": {
+        "name": "Olivaro",
+        "affiliate": "https://theolivaro.com/olv-aff-buy-dtc/?aff_id=32610",
+        "official": "https://theolivaro.com/home/",
+        "title": "Olivaro Review 2026: Do These Blood Sugar Drops Really Work?",
+        "description": "Our Olivaro review covers the liquid blood sugar support drops: the chromium and herbal blend, how many droppers to take, safety notes, refunds, where to buy.",
+        "product_description": "Olivaro is a liquid dietary supplement for balanced blood sugar support in a 30 ml (1 fl oz) dropper bottle with chromium picolinate and a 200 mg blend including Gymnema, African Mango, Green Tea, Maca and Panax Ginseng; 1 to 2 droppers a day.",
+        "published": "2026-10-24",
+        "modified": "2026-10-24",
+        "colors": {
+            # navy blue of the official sales page sections (rgb 18,58,99), darker #0C2A49
+            "primary": "#123A63",
+            "primary-hover": "#0C2A49",
+            "secondary": "#E17300",
+            "bg": "#FFFFFF",
+            "text": "#000000",
+            "cta": "#FFCC00",
+            "cta-hover": "#E7B900",
+            "cta-text": "#000000",
+        },
+        "hero_image": "olivaro-bottle-olive-kitchen.webp",
+        "hero_size": (550, 550),
+        "og_image": "olivaro-og.jpg",
+        "popup_text": "Buying directly from the official source ensures you receive the authentic original product.",
+        "cta_text": "Check Availability On Official Website",
+    },
 }
 
 # Ratoeira Ads tracking tag (carries the ad click id to the affiliate link so sales can be
