@@ -20,6 +20,10 @@ OFFER_WORDS = ["$", "price", "pricing", "discount", "free shipping", "per bottle
 OFFER_WORDS_DE = ["€", "eur", "euro", "preis", "preise", "rabatt", "gutschein", "versandkostenfrei", "kostenloser versand",
                   "pro flasche", "% rabatt", "sonderangebot"]
 
+# Páginas em francês (pedido do usuário, 2026-10-26): mesmas regras, textos fixos em francês.
+OFFER_WORDS_FR = ["€", "eur", "euro", "euros", "prix", "tarif", "remise", "réduction", "rabais", "promo", "promotion",
+                  "code promo", "coupon", "livraison gratuite", "frais de port", "par flacon", "% de réduction", "offre spéciale"]
+
 
 def fixed_texts(lang, n):
     """Títulos dos 8 blocos, as duas frases em vermelho, título dos cards e marcas do rodapé, por idioma."""
@@ -32,6 +36,16 @@ def fixed_texts(lang, n):
             "card": r"Verifizierter Kauf – [36] Flaschen", "card_plain": "Verifizierter Kauf",
             "footer": ("Affiliate-Hinweis", "Food and Drug Administration", "Copyright © | Alle Rechte vorbehalten"),
             "offer": OFFER_WORDS_DE, "html": 'lang="de-DE"'}
+    if lang == "fr":
+        return {
+            "heads": [f"Qu’est-ce que {n} et comment agit-il ?", f"{n} – Ingrédients", f"{n} – Effets secondaires",
+                      f"{n} – Posologie", f"{n} – Remboursement", f"{n} – Avis clients", f"{n} – Où l’acheter ?",
+                      f"{n} est-il une arnaque ?"],
+            "n1": "Pour être sûr d’obtenir le produit authentique, la plupart des utilisateurs choisissent de passer par le site officiel.",
+            "n2": f"Pour vérifier les détails du produit ou sa disponibilité actuelle, le site officiel de {n} reste l’option la plus sûre.",
+            "card": r"Achat vérifié – [36] flacons", "card_plain": "Achat vérifié",
+            "footer": ("Divulgation d’affiliation", "Food and Drug Administration", "Copyright © | Tous droits réservés"),
+            "offer": OFFER_WORDS_FR, "html": 'lang="fr-FR"'}
     return {
         "heads": [f"What Is {n} And How Does It Work?", f"{n} Ingredients", f"{n} Side Effects", f"{n} Dosage",
                   f"{n} – Refund Policy", f"{n} Customer Reviews", f"{n} – Where To Buy", f"Is {n} A Scam?"],
@@ -90,7 +104,7 @@ def main(slug):
     check(f"page language is {lang}", fx["html"] in o and fx["html"] in a)
     low = text_of(o).lower()
     # whole words only, so "dropper bottle" is not read as "per bottle"
-    found = [w for w in fx["offer"] if re.search(r"(?<![a-zäöüß])" + re.escape(w) + r"(?![a-zäöüß])", low)]
+    found = [w for w in fx["offer"] if re.search(r"(?<![a-zäöüßàâçéèêëîïôûùÿœ])" + re.escape(w) + r"(?![a-zäöüßàâçéèêëîïôûùÿœ])", low)]
     check("no offer/price wording in the copy", not found, found)
     check("single <h1>", o.count("<h1") == 1 and a.count("<h1") == 1)
     heads = [html.unescape(re.sub(r"<[^>]+>", "", x)) for x in re.findall(r'<h2 class="band">(.*?)</h2>', o, re.S)]
