@@ -152,6 +152,36 @@ PAGES = {
         "popup_text": "En achetant directement auprès de la source officielle, vous recevez le produit authentique d’origine.",
         "cta_text": "Vérifier la disponibilité sur le site officiel",
     },
+    "gelatin-meister-fr": {
+        "name": "Gelatin Meister",
+        "lang": "fr",
+        # Digistore24 (checkout-ds24.com) pela página do produtor gelatinmeister.com, que repassa aff e sid1..sid5 ao checkout.
+        "affiliate": "https://gelatinmeister.com/dtc-fr?aff=YuryFerreira",
+        "plataforma": "digistore24",
+        "marcador_link": "gelatinmeister.com",
+        "official": "https://gelatinmeister.com/fr/",
+        "title": "Gelatin Meister : Avis, Ingrédients et Mode d’Emploi",
+        "description": "Avis Gelatin Meister : composition détaillée, mode d’emploi, contre-indications, politique de remboursement et conseils pour acheter en toute sécurité.",
+        "product_description": "Gelatin Meister est un complément alimentaire en gélules (30 par flacon) avec chrome, thé vert, vinaigre de cidre, berbérine, gingembre, cannelle, orange amère, Cayenne, lilas des Indes, ginseng coréen et resvératrol.",
+        "published": "2026-10-26",
+        "modified": "2026-10-26",
+        "colors": {
+            "primary": "#C2185B",
+            "primary-hover": "#9C1349",
+            "secondary": "#E91E7A",
+            "bg": "#FFFFFF",
+            "text": "#000000",
+            "cta": "#FFCC00",
+            "cta-hover": "#E7B900",
+            "cta-text": "#000000",
+        },
+        "hero_image": "gelatin-meister-fr-bottle.webp",
+        "hero_size": (550, 550),
+        "og_image": "gelatin-meister-fr-og.jpg",
+        "popup_text": "En achetant directement auprès de la source officielle, vous recevez le produit authentique d’origine.",
+        "cta_text": "Vérifier la disponibilité sur le site officiel",
+        "testimonials": False,
+    },
 }
 
 # Ratoeira Ads tracking tag (carries the ad click id to the affiliate link so sales can be
