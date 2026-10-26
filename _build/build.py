@@ -433,7 +433,7 @@ def build(slug):
 <html lang="{L['html']}">
 <head>
 {head_common(p)}
-<link rel="canonical" href="{url}">
+<link rel="canonical" href="{p.get('canonical', url)}">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="{p['title']}">
