@@ -241,6 +241,36 @@ PAGES = {
         "popup_text": "Beim Kauf direkt über die offizielle Quelle erhalten Sie das authentische Originalprodukt.",
         "cta_text": "Verfügbarkeit auf der offiziellen Website prüfen",
     },
+    "gelatin-meister-de": {
+        "name": "Gelatin Meister",
+        "lang": "de",
+        # Digistore24 pela página do produtor (repassa aff e sid1..sid5 ao checkout); versão alemã (usuário, 2026-10-26).
+        "affiliate": "https://gelatinmeister.com/dtc-de?aff=YuryFerreira",
+        "plataforma": "digistore24",
+        "marcador_link": "gelatinmeister.com",
+        "official": "https://gelatinmeister.com/de/",
+        "title": "Gelatin Meister: Erfahrungen, Inhaltsstoffe, Anwendung",
+        "description": "Gelatin Meister Erfahrungen: detaillierte Zusammensetzung, tägliche Anwendung, Gegenanzeigen, Rückerstattung und Tipps für einen sicheren Kauf auf der Website.",
+        "product_description": "Gelatin Meister ist ein Nahrungsergänzungsmittel in Kapseln (30 pro Flasche) mit Chrom, Grüntee, Apfelessig, Berberin, Ingwer, Zimt, Bitterorange, Cayenne, Königinblume, Koreanischem Ginseng und Resveratrol.",
+        "published": "2026-10-26",
+        "modified": "2026-10-26",
+        "colors": {
+            "primary": "#C2185B",
+            "primary-hover": "#9C1349",
+            "secondary": "#E91E7A",
+            "bg": "#FFFFFF",
+            "text": "#000000",
+            "cta": "#FFCC00",
+            "cta-hover": "#E7B900",
+            "cta-text": "#000000",
+        },
+        "hero_image": "gelatin-meister-de-bottle-official.webp",
+        "hero_size": (550, 605),
+        "og_image": "gelatin-meister-de-og.jpg",
+        "popup_text": "Beim Kauf direkt über die offizielle Quelle erhalten Sie das authentische Originalprodukt.",
+        "cta_text": "Verfügbarkeit auf der offiziellen Website prüfen",
+        "testimonials": False,
+    },
 }
 
 # Ratoeira Ads tracking tag (carries the ad click id to the affiliate link so sales can be
