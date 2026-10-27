@@ -282,11 +282,14 @@ TRACKING_TAG_DS24 = '''<script defer src="https://cdn.raadstag.com/tag.js" data-
 # Tag da Ratoeira para produtos GuruMedia (Everflow, links fasttrack20.com), enviada pelo usuário em 2026-10-19 para todos
 # os produtos GuruMedia (nutra e ecom). Parâmetros sub1..sub5.
 TRACKING_TAG_GURUMEDIA = '''<script defer src="https://cdn.raadstag.com/tag.js" data-tag-id="61-d488820eb4ad4d4fb156b9ed71ae970a" data-event-host="api.raadstag.com" data-plat-params="sub1,sub2,sub3,sub4,sub5"></script>'''
+# Tag da Ratoeira para produtos JVZoo (links jvz9.com), enviada pelo usuário em 2026-10-26. Parâmetros sub_id1..sub_id5.
+TRACKING_TAG_JVZOO = '''<script defer src="https://cdn.raads-hub.com/tag.js" data-tag-id="61-9872d96423e542a2ac1b791583d0b8bf" data-event-host="api.raads-hub.com" data-plat-params="sub_id1,sub_id2,sub_id3,sub_id4,sub_id5"></script>'''
 # Por plataforma: a tag e o trecho que identifica o link de afiliado (os scripts 1 e 2 procuram o link carimbado por ele).
 PLATAFORMAS = {
     "buygoods": {"tag": TRACKING_TAG, "marcador": "aff_id="},
     "digistore24": {"tag": TRACKING_TAG_DS24, "marcador": "digistore24.com"},
     "gurumedia": {"tag": TRACKING_TAG_GURUMEDIA, "marcador": "fasttrack20.com"},
+    "jvzoo": {"tag": TRACKING_TAG_JVZOO, "marcador": "jvz9.com"},
 }
 
 
