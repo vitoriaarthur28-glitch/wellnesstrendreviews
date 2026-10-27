@@ -290,6 +290,8 @@ PLATAFORMAS = {
     "digistore24": {"tag": TRACKING_TAG_DS24, "marcador": "digistore24.com"},
     "gurumedia": {"tag": TRACKING_TAG_GURUMEDIA, "marcador": "fasttrack20.com"},
     "jvzoo": {"tag": TRACKING_TAG_JVZOO, "marcador": "jvz9.com"},
+    # WealthPay: sem tag da Ratoeira cadastrada (2026-10-26); com tag vazia o build gera só a versão orgânica.
+    "wealthpay": {"tag": "", "marcador": "wealthpay.io"},
 }
 
 
