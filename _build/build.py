@@ -33,6 +33,9 @@ LANGS = {
     # "fr" = produtos anunciados só em francês (pedido do usuário em 2026-10-26, primeiro: Nervexa). Mesmas regras da seção 14.
     "fr": {"html": "fr-FR", "og": "fr_FR", "close": "Fermer", "official": "site officiel", "bottles": "flacons",
            "home": "Accueil", "review": "Avis"},
+    # "it" = produtos anunciados em italiano (pedido do usuário em 2026-11-01, primeiro: Gelatin Meister). Mesmas regras da seção 14.
+    "it": {"html": "it-IT", "og": "it_IT", "close": "Chiudi", "official": "sito ufficiale", "bottles": "flaconi",
+           "home": "Home", "review": "Recensioni"},
 }
 
 
