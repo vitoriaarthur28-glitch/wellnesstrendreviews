@@ -36,6 +36,9 @@ LANGS = {
     # "it" = produtos anunciados em italiano (pedido do usuário em 2026-11-01, primeiro: Gelatin Meister). Mesmas regras da seção 14.
     "it": {"html": "it-IT", "og": "it_IT", "close": "Chiudi", "official": "sito ufficiale", "bottles": "flaconi",
            "home": "Home", "review": "Recensioni"},
+    # "es" = produtos anunciados em espanhol (pedido do usuário em 2026-11-01, primeiro: Gelatin Meister). Mesmas regras da seção 14.
+    "es": {"html": "es-ES", "og": "es_ES", "close": "Cerrar", "official": "sitio web oficial", "bottles": "frascos",
+           "home": "Inicio", "review": "Opiniones"},
 }
 
 
