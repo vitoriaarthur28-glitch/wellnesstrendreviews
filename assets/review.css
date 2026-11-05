@@ -94,3 +94,19 @@ a{color:inherit}
   .sticky-cta .btn{display:block;margin:0;padding:12px 10px;font-size:17px}
   .exit-pop{display:none}
 }
+
+/* Hebrew (RTL) — Heebo font + direction overrides. Only active on pages with dir="rtl". */
+@font-face{font-family:"Heebo";font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/heebo-hebrew.woff2) format("woff2");unicode-range:U+0307-0308,U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
+@font-face{font-family:"Heebo";font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/heebo-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+[dir="rtl"] body{font-family:"Heebo",Arial,Helvetica,sans-serif;direction:rtl;text-align:right}
+[dir="rtl"] .hero-title,[dir="rtl"] .hero-domain,[dir="rtl"] .band,[dir="rtl"] .disclaimer{font-family:"Heebo",Arial,sans-serif}
+[dir="rtl"] .btn{font-family:"Heebo",Arial,sans-serif}
+[dir="rtl"] .copy ul{padding-left:0;padding-right:40px}
+[dir="rtl"] .review-head{direction:rtl}
+[dir="rtl"] .exit-close{right:auto;left:8px}
+
+@media (max-width:768px){
+  [dir="rtl"] .copy{text-align:center}
+  [dir="rtl"] .copy ul{padding-right:0;list-style-position:inside}
+}

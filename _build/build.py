@@ -39,6 +39,9 @@ LANGS = {
     # "es" = produtos anunciados em espanhol (pedido do usuário em 2026-11-01, primeiro: Gelatin Meister). Mesmas regras da seção 14.
     "es": {"html": "es-ES", "og": "es_ES", "close": "Cerrar", "official": "sitio web oficial", "bottles": "frascos",
            "home": "Inicio", "review": "Opiniones"},
+    # "he" = produtos anunciados em hebraico (pedido do usuário em 2026-11-05, primeiro: Virdexis). Mesmas regras da seção 14.
+    "he": {"html": "he-IL", "og": "he_IL", "close": "סגור", "official": "האתר הרשמי", "bottles": "בקבוקים",
+           "home": "דף הבית", "review": "ביקורת"},
 }
 
 
@@ -419,9 +422,12 @@ def head_common(p):
 
 
 def head_assets(p):
+    font_preload = ('<link rel="preload" href="/assets/fonts/heebo-hebrew.woff2" as="font" type="font/woff2" crossorigin>'
+                     if p.get("lang") == "he" else
+                     '<link rel="preload" href="/assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>')
     return f"""<meta name="theme-color" content="{p['colors']['primary']}">
 <link rel="icon" href="/favicon-r.ico" sizes="16x16 32x32 48x48">
-<link rel="preload" href="/assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+{font_preload}
 <link rel="stylesheet" href="/assets/review.css?v=9">
 <style>{root_vars(p['colors'])}</style>"""
 
@@ -445,9 +451,10 @@ def build(slug):
     img_url = f"{url}assets/{p['hero_image']}"
     og_url = f"{url}assets/{p['og_image']}"
     a_org = f'href="{aff}" rel="sponsored nofollow noopener" target="_blank"'
+    rtl_attr = ' dir="rtl"' if p.get('lang') == 'he' else ''
     org_body = body.replace("@@AFF@@", a_org).replace("@@IMG@@", "assets/")
     org_html = f"""<!DOCTYPE html>
-<html lang="{L['html']}">
+<html lang="{L['html']}"{rtl_attr}>
 <head>
 {head_common(p)}
 <link rel="canonical" href="{p.get('canonical', url)}">
@@ -501,7 +508,7 @@ def build(slug):
     # chat com especialista do nicho: só na versão Google Ads, antes dos scripts 1 e 2 (CLAUDE.md, seção 13)
     chat = chat_render(slug, aff, p.get("lang", "en")) if CHAT_ATIVO else ""
     ads_html = f"""<!DOCTYPE html>
-<html lang="{L['html']}">
+<html lang="{L['html']}"{rtl_attr}>
 <head>
 {head_common(p)}
 <meta name="robots" content="noindex, nofollow">
