@@ -293,6 +293,9 @@ TRACKING_TAG_JVZOO = '''<script defer src="https://cdn.raads-hub.com/tag.js" dat
 
 # Tag da Ratoeira da HW Affiliate (checkout WealthPay, links order.wealthpay.io), enviada pelo usuário em 2026-10-27. Parâmetros utm_*.
 TRACKING_TAG_WEALTHPAY = '''<script defer src="https://cdn.raadstag.com/tag.js" data-tag-id="61-5e8aaa12f2a444779fe0d2b1dee7a97d" data-event-host="api.raadstag.com" data-plat-params="utm_content,utm_source,utm_medium,utm_term"></script>'''
+# Tag da Ratoeira da Everflow da Emerald Ads Media (em.everflowclient.io, links do rastreador eqlqqn8trk.com), enviada
+# pelo usuário em 2026-11-05 ("ESMERALD EVERFLOW"). Parâmetros sub1..sub5.
+TRACKING_TAG_EVERFLOW = '''<script defer src="https://cdn.raadstag.com/tag.js" data-tag-id="61-a5963aa9d19343c492164091836dffbc" data-event-host="api.raadstag.com" data-plat-params="sub1,sub2,sub3,sub4,sub5"></script>'''
 # Por plataforma: a tag e o trecho que identifica o link de afiliado (os scripts 1 e 2 procuram o link carimbado por ele).
 PLATAFORMAS = {
     "buygoods": {"tag": TRACKING_TAG, "marcador": "aff_id="},
@@ -300,6 +303,7 @@ PLATAFORMAS = {
     "gurumedia": {"tag": TRACKING_TAG_GURUMEDIA, "marcador": "fasttrack20.com"},
     "jvzoo": {"tag": TRACKING_TAG_JVZOO, "marcador": "jvz9.com"},
     "wealthpay": {"tag": TRACKING_TAG_WEALTHPAY, "marcador": "wealthpay.io"},
+    "everflow": {"tag": TRACKING_TAG_EVERFLOW, "marcador": "eqlqqn8trk.com"},
 }
 
 
