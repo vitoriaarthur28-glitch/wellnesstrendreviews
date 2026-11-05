@@ -1,0 +1,4 @@
+# Google Ads version: keep out of the index (reinforces the meta robots tag)
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow"
+</IfModule>
