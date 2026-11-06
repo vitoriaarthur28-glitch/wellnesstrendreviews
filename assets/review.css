@@ -53,7 +53,10 @@ a{color:inherit}
 
 .site-footer{background:#fff;padding:40px 10px 10px}
 .disclaimer{max-width:1120px;margin:0 auto 20px;padding:0 60px;color:#444;font-family:"Montserrat",Arial,sans-serif;font-size:9px;font-weight:400;line-height:22px;text-align:justify}
-.legal{list-style:none;max-width:912px;margin:0 auto 20px;padding:10px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;color:#000;font-size:15px;font-weight:700;line-height:15px;text-align:center}
+.affiliate-notice{max-width:1120px;margin:0 auto 16px;padding:0 60px;color:#444;font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:600;line-height:22px;text-align:center}
+.legal{list-style:none;max-width:912px;margin:0 auto 20px;padding:10px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;color:#000;font-size:14px;font-weight:700;line-height:15px;text-align:center}
+.legal a{color:inherit;text-decoration:none}
+.legal a:hover{text-decoration:underline}
 .copyright{max-width:1120px;margin:0 auto;padding:0 80px 30px;color:#000;font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;line-height:22px;text-align:center}
 
 /* Organic version only: sticky CTA bar (mobile) and exit pop-up (desktop) */
@@ -86,7 +89,8 @@ a{color:inherit}
   .review-title{font-size:16px}
   .site-footer{padding:30px 10px}
   .disclaimer{padding:0 20px}
-  .legal{font-size:12px;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .affiliate-notice{padding:0 20px;font-size:10px}
+  .legal{font-size:11px;gap:6px 14px}
   .legal li{overflow-wrap:anywhere;hyphens:auto}
   .copyright{font-size:9px;padding:0 20px}
   .has-sticky{padding-bottom:76px}
