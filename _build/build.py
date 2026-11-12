@@ -44,6 +44,9 @@ LANGS = {
            "home": "דף הבית", "review": "ביקורת"},
     "sv": {"html": "sv-SE", "og": "sv_SE", "close": "Stäng", "official": "officiella webbplatsen", "bottles": "flaskor",
            "home": "Hem", "review": "Recension"},
+    # "ja" = produtos em japonês (pedido do usuário em 2026-11-12, primeiro: Melara). Mesmas regras da seção 14.
+    "ja": {"html": "ja-JP", "og": "ja_JP", "close": "閉じる", "official": "公式サイト", "bottles": "本",
+           "home": "ホーム", "review": "レビュー"},
 }
 
 
