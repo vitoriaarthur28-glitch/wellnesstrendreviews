@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parent.parent
 # ── category definitions (slug → category) ────────────────────────────
 CATEGORIES = {
     "Blood Sugar Support": [
+        "glucolife-plus",
         "glucocontrol","glucotide","glucotonic","glucotrustbites","glucovive",
         "glycobalance","glycofree","glycopezil","glycoreset","glpro","glpropatch",
         "honey-harmony","insufend","payarmin","regenvive","sugarbind","sugarmute",
