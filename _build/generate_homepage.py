@@ -75,7 +75,7 @@ CATEGORIES = {
         "herpafend","tonicgreens",
     ],
     "Sleep": [
-        "yu-sleep", "melara",
+        "yu-sleep", "melara", "melara-max",
     ],
     "Pet Health": [
         "pawbiotix",
