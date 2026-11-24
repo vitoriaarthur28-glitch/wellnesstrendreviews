@@ -44,6 +44,9 @@ LANGS = {
            "home": "דף הבית", "review": "ביקורת"},
     "sv": {"html": "sv-SE", "og": "sv_SE", "close": "Stäng", "official": "officiella webbplatsen", "bottles": "flaskor",
            "home": "Hem", "review": "Recension"},
+    # "nl" = produtos em holandês/flamengo (pedido do usuário em 2026-11-23, primeiro: Vitalix Prime NL & BE). Mesmas regras da seção 14.
+    "nl": {"html": "nl-NL", "og": "nl_NL", "close": "Sluiten", "official": "officiële website", "bottles": "flessen",
+           "home": "Home", "review": "Ervaringen"},
     # "ja" = produtos em japonês (pedido do usuário em 2026-11-12, primeiro: Melara). Mesmas regras da seção 14.
     "ja": {"html": "ja-JP", "og": "ja_JP", "close": "閉じる", "official": "公式サイト", "bottles": "本",
            "home": "ホーム", "review": "レビュー"},
